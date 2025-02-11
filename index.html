@@ -34,17 +34,25 @@
             height: 100%;
             object-fit: cover;
         }
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
         #content img {
             width: 300px;
+            margin-bottom: 20px; /* Добавляем отступ снизу */
         }
         #text, #contract {
             font-size: 36px;
             font-weight: bold;
             text-shadow: 2px 2px 4px black;
+            margin-bottom: 20px; /* Отступ от текста */
         }
         #contract {
             cursor: pointer;
-            margin-top: 20px;
             font-size: 20px;
             color: white;
         }
@@ -87,7 +95,7 @@
         document.addEventListener("DOMContentLoaded", () => {
             const words = "Just imagine if all people lived in peace".split(" ");
             const textDiv = document.getElementById("text");
-            textDiv.innerHTML = words.map(word => <span>${word}</span>).join(" ");
+            textDiv.innerHTML = words.map(word => `<span>${word}</span>`).join(" ");
             
             const audio = document.getElementById("audio");
             const loopAudio = document.getElementById("loop-audio");
