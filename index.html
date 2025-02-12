@@ -34,9 +34,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
         }
         #content {
             display: flex;
@@ -83,8 +80,7 @@
 </head>
 <body onclick="copyContract()">
     <div id="video-container">
-        <video id="bg-video1" src="peace1_2.mp4" muted autoplay></video>
-        <video id="bg-video2" src="peace1_3.mp4" muted></video>
+        <video id="bg-video" src="peace1_2.mp4" muted autoplay></video>
     </div>
     <div id="content">
         <img src="image 26 (1).png" alt="Centered Image">
@@ -119,20 +115,13 @@
             setTimeout(() => { copied.style.display = "none"; }, 2000);
         }
 
-        // Смена видео без пауз
-        const video1 = document.getElementById('bg-video1');
-        const video2 = document.getElementById('bg-video2');
-        
-        video1.onended = () => {
-            video1.style.display = "none"; // Скрываем первое видео
-            video2.style.display = "block"; // Показываем второе видео
-            video2.play(); // Запускаем второе видео
-        };
-        
-        video2.onended = () => {
-            video2.style.display = "none"; // Скрываем второе видео
-            video1.style.display = "block"; // Показываем первое видео
-            video1.play(); // Запускаем первое видео
+        // Смена видео без пауз и миганий
+        const bgVideo = document.getElementById('bg-video');
+
+        bgVideo.onended = () => {
+            bgVideo.src = bgVideo.src === "peace1_2.mp4" ? "peace1_3.mp4" : "peace1_2.mp4";
+            bgVideo.load(); // Загружаем новое видео
+            bgVideo.play(); // И сразу запускаем его
         };
     </script>
 </body>
