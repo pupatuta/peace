@@ -115,18 +115,17 @@
             setTimeout(() => { copied.style.display = "none"; }, 2000);
         }
 
-        // Смена видео с короткой задержкой
+        // Смена видео по кругу
         const bgVideo = document.getElementById('bg-video');
+        const videos = ["peace1_2.mp4", "peace1_3.mp4"];
+        let currentVideoIndex = 0;
+
         bgVideo.onended = () => {
-            setTimeout(() => {
-                if (bgVideo.src.includes("peace1_2.mp4")) {
-                    bgVideo.src = "peace1_3.mp4"; // Меняем на следующее видео
-                } else {
-                    bgVideo.src = "peace1_2.mp4"; // Меняем обратно на первое видео
-                }
-                bgVideo.load(); // Загружаем следующее видео
-                bgVideo.play(); // Запускаем следующее видео
-            }, 100); // 100ms задержка, чтобы избежать мигания
+            // Переключаем на следующее видео
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+            bgVideo.src = videos[currentVideoIndex];
+            bgVideo.load(); // Загружаем следующее видео
+            bgVideo.play(); // Запускаем следующее видео
         };
     </script>
 </body>
