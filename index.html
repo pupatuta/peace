@@ -109,17 +109,37 @@
     <div id="copied">✔ Contract copied</div>
     <audio id="audio" src="3.mp3" autoplay></audio>
     <audio id="loop-audio" src="4d.mp3" loop></audio>
-    <div id="social-icons">
-        <a href="https://dexscreener.com/solana/raydium?rankBy=trendingScoreH24&order=desc" target="_blank">
-            <img src="dexscreener-icon.png" alt="DexScreener">
-        </a>
-        <a href="https://x.com/PeaceLandMascot" target="_blank">
-            <img src="twitter-icon.png" alt="Twitter">
-        </a>
-        <a href="https://t.me/peacelandmascot_portal" target="_blank">
-            <img src="telegram-icon.png" alt="Telegram">
-        </a>
-    </div>
+    <div id="social-links">
+    <a href="https://dexscreener.com/solana/raydium?rankBy=trendingScoreH24&order=desc" target="_blank">
+        <img src="dexscreener-icon.png" alt="DexScreener">
+    </a>
+    <a href="https://x.com/PeaceLandMascot" target="_blank">
+        <img src="twitter-icon.png" alt="Twitter">
+    </a>
+    <a href="https://t.me/peacelandmascot_portal" target="_blank">
+        <img src="telegram-icon.png" alt="Telegram">
+    </a>
+</div>
+
+<style>
+    #social-links {
+        position: fixed;
+        bottom: 20px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    #social-links a img {
+        width: 50px; /* Размер иконок */
+        height: auto;
+        opacity: 0.8; /* Прозрачность */
+        margin: 0 20px; /* Расстояние между иконками */
+        transition: opacity 0.3s ease-in-out;
+    }
+    #social-links a img:hover {
+        opacity: 1;
+    }
+</style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const words = "Just imagine if all people lived in peace".split(" ");
