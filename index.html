@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peace Land Mascot</title>
-    <link rel="icon" href="image 27.png" type="image/png"> <!-- Добавлен фавикон -->
+    <link rel="icon" href="image 27.png" type="image/png">
     <style>
         * {
             margin: 0;
@@ -22,6 +22,7 @@
             font-family: Arial, sans-serif;
             flex-direction: column;
             text-align: center;
+            position: relative;
         }
         #video-container {
             position: absolute;
@@ -76,6 +77,23 @@
             border-radius: 10px;
             display: none;
         }
+        #social-icons {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 20px;
+        }
+        #social-icons a {
+            text-decoration: none;
+        }
+        #social-icons img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s;
+        }
+        #social-icons img:hover {
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body onclick="copyContract()">
@@ -91,13 +109,23 @@
     <div id="copied">✔ Contract copied</div>
     <audio id="audio" src="3.mp3" autoplay></audio>
     <audio id="loop-audio" src="4d.mp3" loop></audio>
-
+    <div id="social-icons">
+        <a href="https://dexscreener.com/solana/raydium?rankBy=trendingScoreH24&order=desc" target="_blank">
+            <img src="dexscreener-icon.png" alt="DexScreener">
+        </a>
+        <a href="https://x.com/PeaceLandMascot" target="_blank">
+            <img src="twitter-icon.png" alt="Twitter">
+        </a>
+        <a href="https://t.me/peacelandmascot_portal" target="_blank">
+            <img src="telegram-icon.png" alt="Telegram">
+        </a>
+    </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const words = "Just imagine if all people lived in peace".split(" ");
             const textDiv = document.getElementById("text");
             textDiv.innerHTML = words.map(word => `<span>${word}</span>`).join(" ");
-            
+
             const audio = document.getElementById("audio");
             const loopAudio = document.getElementById("loop-audio");
             audio.play().catch(() => {
@@ -115,17 +143,15 @@
             setTimeout(() => { copied.style.display = "none"; }, 2000);
         }
 
-        // Смена видео по очереди без задержки
         const bgVideo = document.getElementById('bg-video');
-
         bgVideo.onended = function() {
             if (bgVideo.src.includes("peace1_2.mp4")) {
                 bgVideo.src = "peace1_3.mp4";
             } else {
                 bgVideo.src = "peace1_2.mp4";
             }
-            bgVideo.load();  // Загружаем следующее видео
-            bgVideo.play();  // Запускаем его сразу
+            bgVideo.load();
+            bgVideo.play();
         };
     </script>
 </body>
