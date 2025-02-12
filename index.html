@@ -80,8 +80,7 @@
 </head>
 <body onclick="copyContract()">
     <div id="video-container">
-        <video id="bg-video1" src="peace1_2.mp4" muted autoplay></video>
-        <video id="bg-video2" src="peace1_3.mp4" muted></video>
+        <video id="bg-video" src="peace1_2.mp4" muted autoplay></video>
     </div>
     <div id="content">
         <img src="image 26 (1).png" alt="Centered Image">
@@ -116,14 +115,12 @@
             setTimeout(() => { copied.style.display = "none"; }, 2000);
         }
 
-        // Смена видео без черного экрана
-        const bgVideo1 = document.getElementById('bg-video1');
-        const bgVideo2 = document.getElementById('bg-video2');
-
-        bgVideo1.onended = () => {
-            bgVideo1.style.display = 'none'; // Скрываем первое видео
-            bgVideo2.style.display = 'block'; // Показываем второе видео
-            bgVideo2.play(); // Запускаем второе видео
+        // Смена видео без миганий
+        const bgVideo = document.getElementById('bg-video');
+        bgVideo.onended = () => {
+            bgVideo.src = "peace1_3.mp4"; // Меняем на следующее видео
+            bgVideo.load(); // Загружаем следующее видео
+            bgVideo.play(); // Запускаем следующее видео без паузы
         };
     </script>
 </body>
